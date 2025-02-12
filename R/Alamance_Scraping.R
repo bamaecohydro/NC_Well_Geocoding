@@ -20,7 +20,7 @@ library(parallel)
 #Define URL to scrape
 url <- "https://celr.dph.ncdhhs.gov/microBiology?client.rasclientId=566000271EH&filterBy=1&recentDay=5&docFrom=&docTo="
 
-# 3.0 Create list of pdf's to scrape -------------------------------------------
+# 2.0 Create list of pdf's to scrape -------------------------------------------
 # Read HTML content
 df <- read_html(url) %>% html_elements("a") %>% html_attr("href") %>% as_tibble()
 
