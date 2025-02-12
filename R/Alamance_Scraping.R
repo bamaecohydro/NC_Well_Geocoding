@@ -5,6 +5,11 @@
 # Subject: Scrape data from NC Well database website
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+#Next steps: 
+# (i) pull more information from pdf (date of sample, test results, etc)
+# (ii) setup scrpt to run for all counties
+
+
 # 1.0 Setup workspace ----------------------------------------------------------
 #Clear memory
 remove(list=ls())
