@@ -81,10 +81,17 @@ city_list <- pm_dictionary(
 #Parse City
 output <- output %>% pm_city_parse(dictionary = city_list)
 
+#Remove dates from city name
+output <- output %>% mutate(pm.address = str_remove(pm.address, "^.*;\\s*"))
+
+#Remove erronious zip codes
+output <- output %>% 
+  mutate(pm.zip = if_else(nchar(pm.zip) > 5, NA_character_, pm.zip))
+
 #Left Join and tidy
 df <- left_join(df, output) 
 
-#DEfine pre-geocode error col
+#Define pre-geocode error col
 df <- df %>%
   mutate(scraping_error = if_any(c(pm.address, pm.city, pm.state, pm.zip), is.na) %>% as.integer())
 
@@ -105,4 +112,7 @@ df<-df %>%
 
 #Export
 write_csv(df, "temp//alamance_cleaning.csv")
+
+#some stats
+sum(df$scraping_error)
    
